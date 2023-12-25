@@ -3,4 +3,4 @@
 **/*.tfstate.*
 **/.terraform/*
 **/.terraform.lock.hcl
-**/rtp-03/pem
+**/rtp-03.pem

@@ -2,5 +2,5 @@
 **/*.tfstate
 **/*.tfstate.*
 **/.terraform/*
-.terraform.lock
-rtp-03
+**/.terraform.lock.hcl
+**/rtp-03/pem

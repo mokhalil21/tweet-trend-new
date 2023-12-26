@@ -9,11 +9,15 @@ provider "aws" {
 
 resource "aws_instance" "demo-server" {
 
-    ami = "ami-022e1a32d3f742bd8"
+    ami = "ami-0c7217cdde317cfec"
     instance_type = "t2.micro"
     key_name = "rtp-03"
     subnet_id = aws_subnet.dpp-puplic-subnet-01.id
     vpc_security_group_ids = [aws_security_group.demo-sg.id]
+    for_each = toset(["jenkins-master", "build-slave", "ansible"])
+   tags = {
+     Name = "${each.key}"
+   }
   
 }
 

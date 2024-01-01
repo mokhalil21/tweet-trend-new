@@ -16,5 +16,15 @@ pipeline {
                 sh 'mvn clean deploy'
             }
         }
+        stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'khalil-sonar-scanner'
+            }
+            steps {
+                withSonarQubeEnv('khalil-sonarqube-server') { // Specify the name of your SonarQube server
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
     }
 }

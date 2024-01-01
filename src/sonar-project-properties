@@ -3,7 +3,7 @@ sonar.projectKey=mokhalil21_tweet-trend-new
 
 # --- optional properties ---
 sonar.language=java
-sonar.organization=Mohamed-Khalil
+sonar.organization=mokhalil21
 # defaults to project key
 sonar.projectName=tweet-trend-new
 # defaults to 'not provided'

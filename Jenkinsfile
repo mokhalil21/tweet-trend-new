@@ -12,19 +12,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "----------------------- build started-----------"
+                echo "----------------------- build started -----------"
                 // Your build steps go here
                 sh 'mvn clean deploy -Dmaven.test.skip=true'
-                echo "----------------------- build completed-----------"
+                echo "----------------------- build completed -----------"
             }
         }
-        stage ("test") {
-            steps{
-                echo "----------------------- unit test started-----------"
+        stage('Test') {
+            steps {
+                echo "----------------------- unit test started -----------"
                 sh 'mvn surefire-report:report'
-                echo "----------------------- unit test Completed-----------"
+                echo "----------------------- unit test completed -----------"
             }
-
         }
         stage('SonarQube analysis') {
             environment {
@@ -33,6 +32,18 @@ pipeline {
             steps {
                 withSonarQubeEnv('khalil-sonarqube-server') { // Specify the name of your SonarQube server
                     sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                script {
+                    timeout(time: 1, unit: 'HOURS') {
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                        }
+                    }
                 }
             }
         }

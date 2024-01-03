@@ -1,4 +1,4 @@
-def imageName = 'Khalil03.jfrog.io/khalil-docker-local/ttrend'
+def imageName = 'khalil03.jfrog.io/khalil-docker-local/ttrend'
 def version = '2.0.2'
 
 def registry = 'https://khalil03.jfrog.io'

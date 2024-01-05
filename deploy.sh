@@ -4,3 +4,4 @@ kubectl apply -f secret.yaml
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 ubuntu@ip-10-1-1-213:~/kubernetes$ 
+#

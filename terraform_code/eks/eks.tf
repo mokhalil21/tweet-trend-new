@@ -170,5 +170,3 @@ resource "aws_eks_node_group" "backend" {
     #aws_subnet.pub_sub2,
   ]
 }
-
-
